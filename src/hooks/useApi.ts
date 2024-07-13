@@ -22,10 +22,10 @@ const useApi = (url: string) => {
                         "Authorization": `${cookies.get('token')}`,
                     },
                 });
-                dispatch(setUsers(response.data));
+                dispatch(setUsers(response?.data));
             } catch (error: any) {
                 console.log(error);
-                setError(error.response.data.error);
+                setError(error.response.data?.error);
             } finally {
                 setLoading(false);
             }
