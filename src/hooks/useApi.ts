@@ -25,7 +25,7 @@ const useApi = (url: string) => {
                 dispatch(setUsers(response?.data));
             } catch (error: any) {
                 console.log(error);
-                setError(error.response.data?.error);
+                setError(error);
             } finally {
                 setLoading(false);
             }
