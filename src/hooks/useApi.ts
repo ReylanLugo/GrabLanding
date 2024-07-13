@@ -16,7 +16,7 @@ const useApi = (url: string) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(urlx + url, {
+                const response = await axiosInstance.get(urlx + url, {
                     headers: {
                         "Content-Type": "application/json",
                         "Authorization": `${cookies.get('token')}`,

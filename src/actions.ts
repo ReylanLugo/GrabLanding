@@ -1,10 +1,11 @@
 "use server";
 import axios from "axios";
+import axiosInstance from "@/utils/axios";
 
 export async function Login(credentials: { username: string, password: string }) {
     try {
         const apiUrl = process.env.API || "http://localhost:7000";
-        const response = await axios.post(`${apiUrl}/auth/login`, credentials);
+        const response = await axiosInstance.post(`${apiUrl}/auth/login`, credentials);
         const {token} = response.data;
         return {
             success: true,
@@ -24,7 +25,7 @@ export async function Login(credentials: { username: string, password: string })
 export async function Register(credentials: { username: string, password: string }) {
     try {
         const apiUrl = process.env.API || "http://localhost:7000";
-        const response = await axios.post(`${apiUrl}/auth/register`, credentials);
+        const response = await axiosInstance.post(`${apiUrl}/auth/register`, credentials);
         const {token} = response.data;
         return {
             success: true,
@@ -44,7 +45,7 @@ export async function Register(credentials: { username: string, password: string
 export async function DeleteUser(id: number, jwt: string) {
     try {
         const apiUrl = process.env.API || "http://localhost:7000";
-        const response = await axios.delete(`${apiUrl}/users/${id}`, {
+        const response = await axiosInstance.delete(`${apiUrl}/users/${id}`, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${jwt}`,
@@ -68,7 +69,7 @@ export async function UpdateUser(id: number, credentials: { username?: string, p
 
     try {
         const apiUrl = process.env.API || "http://localhost:7000";
-        const response = await axios.put(`${apiUrl}/users/${id}`, credentials, {
+        const response = await axiosInstance.put(`${apiUrl}/users/${id}`, credentials, {
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${jwt}`,
