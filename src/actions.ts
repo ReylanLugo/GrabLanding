@@ -11,12 +11,12 @@ export async function Login(credentials: { username: string, password: string })
             token: token,
             msg: "Login Successful"
         }
-    } catch (error) {
+    } catch (error:any) {
         // TODO: Implement logging error
         console.log(error);
         return {
             success: false,
-            msg: error.response.data.error || "Login Failed"
+            msg: error?.response?.data.error || "Login Failed"
         }
     }
 }
@@ -31,7 +31,7 @@ export async function Register(credentials: { username: string, password: string
             token: token,
             msg: "Register Successful"
         }
-    } catch (error) {
+    } catch (error:any) {
         // TODO: Implement logging error
         console.log(error.response.data.error);
         return {
