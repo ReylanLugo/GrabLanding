@@ -4,6 +4,7 @@ import {Cookies} from 'react-cookie';
 import axios from 'axios';
 import {useAppDispatch, useAppSelector} from "@/store/hooks";
 import {setUsers} from "@/store/features/admin";
+import axiosInstance from "@/utils/axios";
 
 const useApi = (url: string) => {
     const [loading, setLoading] = useState(true);
